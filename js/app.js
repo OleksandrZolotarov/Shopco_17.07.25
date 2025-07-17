@@ -8841,7 +8841,7 @@
             }
             return;
         }
-        if (window.innerWidth <= 495 && searchForm.contains(targetElement)) return;
+        if (window.innerWidth <= 495 && (searchForm.contains(targetElement) || searchButton)) return;
         if (targetElement.closest(".cart-card__delete-button")) {
             const cartCard = targetElement.closest(".cart__body-card");
             if (cartCard) {
