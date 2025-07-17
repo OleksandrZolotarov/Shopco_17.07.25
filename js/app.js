@@ -8824,6 +8824,21 @@
     function documentAction(e) {
         const targetElement = e.target;
         const clicked = targetElement.closest(".item");
+        const searchForm = document.querySelector(".header__search-form");
+        const logo = document.querySelector(".header__logo");
+        const searchButton = targetElement.closest(".search-form__button");
+        if (!searchForm || !logo || !targetElement) return;
+        if (window.innerWidth <= 495 && searchButton) {
+            const isSearchVisible = searchForm.classList.contains("visible");
+            if (!isSearchVisible) {
+                searchForm.classList.add("visible");
+                searchForm.style.visibility = "visible";
+                logo.style.display = "none";
+                searchButton.setAttribute("type", "submit");
+            }
+            return;
+        }
+        if (window.innerWidth <= 495 && searchForm.contains(targetElement)) return;
         if (targetElement.closest(".cart-card__delete-button")) {
             const cartCard = targetElement.closest(".cart__body-card");
             if (cartCard) {
@@ -8847,20 +8862,6 @@
                 summaryBlock.style.display = "";
                 emptyMessage.style.display = "none";
             }
-        }
-        const searchForm = document.querySelector(".header__search-form");
-        const logo = document.querySelector(".header__logo");
-        const searchButton = targetElement.closest(".search-form__button");
-        if (!searchForm || !logo || !targetElement) return;
-        if (window.innerWidth <= 495 && searchButton) {
-            const isSearchVisible = searchForm.classList.contains("visible");
-            if (!isSearchVisible) {
-                searchForm.classList.add("visible");
-                searchForm.style.visibility = "visible";
-                logo.style.display = "none";
-                searchButton.setAttribute("type", "submit");
-            }
-            return;
         }
         if (!clicked) return;
     }
