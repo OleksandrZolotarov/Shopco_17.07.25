@@ -8840,7 +8840,7 @@
             }), 0);
             return;
         }
-        if (isSmallScreen && (searchForm.contains(targetElement) || searchButton)) return;
+        if (isSmallScreen && searchForm.contains(targetElement)) return;
         if (targetElement.closest(".cart-card__delete-button")) {
             const cartCard = targetElement.closest(".cart__body-card");
             if (cartCard) {
