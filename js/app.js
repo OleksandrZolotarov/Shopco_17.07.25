@@ -8831,10 +8831,13 @@
         if (window.innerWidth <= 495 && searchButton) {
             const isSearchVisible = searchForm.classList.contains("visible");
             if (!isSearchVisible) {
+                searchButton.setAttribute("type", "button");
                 searchForm.classList.add("visible");
                 searchForm.style.visibility = "visible";
                 logo.style.display = "none";
-                searchButton.setAttribute("type", "submit");
+                setTimeout((() => {
+                    searchButton.setAttribute("type", "submit");
+                }), 0);
             }
             return;
         }
