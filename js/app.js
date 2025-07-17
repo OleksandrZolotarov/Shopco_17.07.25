@@ -8820,7 +8820,7 @@
         handleResize();
         updateSearchButtonType();
     }));
-    document.addEventListener("click", documentAction);
+    document.addEventListener("pointerdown", documentAction);
     function documentAction(e) {
         const targetElement = e.target;
         const clicked = targetElement.closest(".item");
