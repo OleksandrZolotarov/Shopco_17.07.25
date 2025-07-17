@@ -8827,21 +8827,20 @@
         const searchForm = document.querySelector(".header__search-form");
         const logo = document.querySelector(".header__logo");
         const searchButton = targetElement.closest(".search-form__button");
-        if (!searchForm || !logo || !targetElement) return;
-        if (window.innerWidth <= 495 && searchButton) {
-            const isSearchVisible = searchForm.classList.contains("visible");
-            if (!isSearchVisible) {
-                searchButton.setAttribute("type", "button");
-                searchForm.classList.add("visible");
-                searchForm.style.visibility = "visible";
-                logo.style.display = "none";
-                setTimeout((() => {
-                    searchButton.setAttribute("type", "submit");
-                }), 0);
-            }
+        if (!searchForm || !logo) return;
+        const isSmallScreen = window.innerWidth <= 495;
+        const isSearchVisible = searchForm.classList.contains("visible");
+        if (isSmallScreen && searchButton && !isSearchVisible) {
+            searchButton.setAttribute("type", "button");
+            searchForm.classList.add("visible");
+            searchForm.style.visibility = "visible";
+            logo.style.display = "none";
+            setTimeout((() => {
+                searchButton.setAttribute("type", "submit");
+            }), 0);
             return;
         }
-        if (window.innerWidth <= 495 && (searchForm.contains(targetElement) || searchButton)) return;
+        if (isSmallScreen && (searchForm.contains(targetElement) || searchButton)) return;
         if (targetElement.closest(".cart-card__delete-button")) {
             const cartCard = targetElement.closest(".cart__body-card");
             if (cartCard) {
@@ -8850,21 +8849,13 @@
             }
             return;
         }
-        function checkIfCartIsEmpty() {
-            const cartContainer = document.querySelector(".cart__body-cards");
-            const summaryBlock = document.querySelector(".cart__body-summary");
-            const emptyMessage = document.querySelector(".cart__empty-message");
-            if (!cartContainer || !summaryBlock || !emptyMessage) return;
-            const hasItems = cartContainer.querySelector(".cart__body-card");
-            if (!hasItems) {
-                cartContainer.style.display = "none";
-                summaryBlock.style.display = "none";
-                emptyMessage.style.display = "flex";
-            } else {
-                cartContainer.style.display = "";
-                summaryBlock.style.display = "";
-                emptyMessage.style.display = "none";
-            }
+        if (isSmallScreen && isSearchVisible) {
+            searchForm.classList.remove("visible");
+            searchForm.style.visibility = "hidden";
+            logo.style.display = "block";
+            const btn = document.querySelector(".search-form__button");
+            if (btn) btn.setAttribute("type", "button");
+            return;
         }
         if (!clicked) return;
     }
@@ -8889,6 +8880,22 @@
         if (window.innerWidth <= 495) {
             if (!searchForm.classList.contains("visible")) button.setAttribute("type", "button");
         } else button.setAttribute("type", "submit");
+    }
+    function checkIfCartIsEmpty() {
+        const cartContainer = document.querySelector(".cart__body-cards");
+        const summaryBlock = document.querySelector(".cart__body-summary");
+        const emptyMessage = document.querySelector(".cart__empty-message");
+        if (!cartContainer || !summaryBlock || !emptyMessage) return;
+        const hasItems = cartContainer.querySelector(".cart__body-card");
+        if (!hasItems) {
+            cartContainer.style.display = "none";
+            summaryBlock.style.display = "none";
+            emptyMessage.style.display = "flex";
+        } else {
+            cartContainer.style.display = "";
+            summaryBlock.style.display = "";
+            emptyMessage.style.display = "none";
+        }
     }
     function adjustCounterBorders() {
         const counters = document.querySelectorAll(".find__body-counter-wrapper");
