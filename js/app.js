@@ -8820,15 +8820,14 @@
         handleResize();
         updateSearchButtonType();
     }));
-    document.addEventListener("pointerdown", documentAction);
+    document.addEventListener("click", documentAction);
     function documentAction(e) {
         const targetElement = e.target;
-        const clicked = targetElement.closest(".item");
         const searchForm = document.querySelector(".header__search-form");
         const logo = document.querySelector(".header__logo");
         const searchButton = targetElement.closest(".search-form__button");
-        if (!searchForm || !logo) return;
         const isSmallScreen = window.innerWidth <= 495;
+        if (!searchForm || !logo) return;
         const isSearchVisible = searchForm.classList.contains("visible");
         if (isSmallScreen && searchButton && !isSearchVisible) {
             searchButton.setAttribute("type", "button");
@@ -8841,14 +8840,6 @@
             return;
         }
         if (isSmallScreen && (searchForm.contains(targetElement) || searchButton)) return;
-        if (targetElement.closest(".cart-card__delete-button")) {
-            const cartCard = targetElement.closest(".cart__body-card");
-            if (cartCard) {
-                cartCard.remove();
-                checkIfCartIsEmpty();
-            }
-            return;
-        }
         if (isSmallScreen && isSearchVisible) {
             searchForm.classList.remove("visible");
             searchForm.style.visibility = "hidden";
@@ -8857,7 +8848,14 @@
             if (btn) btn.setAttribute("type", "button");
             return;
         }
-        if (!clicked) return;
+        if (targetElement.closest(".cart-card__delete-button")) {
+            const cartCard = targetElement.closest(".cart__body-card");
+            if (cartCard) {
+                cartCard.remove();
+                checkIfCartIsEmpty();
+            }
+            return;
+        }
     }
     function handleResize() {
         const searchForm = document.querySelector(".header__search-form");
