@@ -8813,88 +8813,32 @@
         passwordInput.addEventListener("input", checkPasswordsMatch);
     }));
     document.addEventListener("DOMContentLoaded", (() => {
-        handleResize();
-        updateSearchButtonType();
-    }));
-    window.addEventListener("resize", (() => {
-        handleResize();
-        updateSearchButtonType();
-    }));
-    document.addEventListener("click", documentAction);
-    function documentAction(e) {
-        const targetElement = e.target;
         const searchForm = document.querySelector(".header__search-form");
+        const searchInput = document.querySelector(".search-form__input");
+        const searchButton = document.querySelector(".search-form__button");
         const logo = document.querySelector(".header__logo");
-        const searchButton = targetElement.closest(".search-form__button");
-        const isSmallScreen = window.innerWidth <= 495;
-        if (!searchForm || !logo) return;
-        const isSearchVisible = searchForm.classList.contains("visible");
-        if (isSmallScreen && searchButton && !isSearchVisible) {
-            searchButton.setAttribute("type", "button");
-            searchForm.classList.add("visible");
-            searchForm.style.visibility = "visible";
-            logo.style.display = "none";
-            setTimeout((() => {
+        if (!searchForm || !searchButton || !logo) return;
+        searchButton.addEventListener("click", (e => {
+            if (window.innerWidth <= 495) if (!searchForm.classList.contains("visible")) {
+                searchForm.classList.add("visible");
+                searchForm.style.visibility = "visible";
+                logo.style.display = "none";
                 searchButton.setAttribute("type", "submit");
-            }), 0);
-            return;
-        }
-        if (isSmallScreen && (searchForm.contains(targetElement) || searchButton)) return;
-        if (isSmallScreen && isSearchVisible) {
-            searchForm.classList.remove("visible");
-            searchForm.style.visibility = "hidden";
-            logo.style.display = "block";
-            const btn = document.querySelector(".search-form__button");
-            if (btn) btn.setAttribute("type", "button");
-            return;
-        }
-        if (targetElement.closest(".cart-card__delete-button")) {
-            const cartCard = targetElement.closest(".cart__body-card");
-            if (cartCard) {
-                cartCard.remove();
-                checkIfCartIsEmpty();
+                searchInput.focus();
             }
-            return;
-        }
-    }
-    function handleResize() {
-        const searchForm = document.querySelector(".header__search-form");
-        const logo = document.querySelector(".header__logo");
-        if (!searchForm || !logo) return;
-        if (window.innerWidth > 495) {
-            searchForm.style.visibility = "visible";
-            searchForm.classList.add("visible");
-            logo.style.display = "block";
-        } else {
-            searchForm.style.visibility = "hidden";
-            searchForm.classList.remove("visible");
-            logo.style.display = "block";
-        }
-    }
-    function updateSearchButtonType() {
-        const button = document.querySelector(".search-form__button");
-        const searchForm = document.querySelector(".header__search-form");
-        if (!button || !searchForm) return;
-        if (window.innerWidth <= 495) {
-            if (!searchForm.classList.contains("visible")) button.setAttribute("type", "button");
-        } else button.setAttribute("type", "submit");
-    }
-    function checkIfCartIsEmpty() {
-        const cartContainer = document.querySelector(".cart__body-cards");
-        const summaryBlock = document.querySelector(".cart__body-summary");
-        const emptyMessage = document.querySelector(".cart__empty-message");
-        if (!cartContainer || !summaryBlock || !emptyMessage) return;
-        const hasItems = cartContainer.querySelector(".cart__body-card");
-        if (!hasItems) {
-            cartContainer.style.display = "none";
-            summaryBlock.style.display = "none";
-            emptyMessage.style.display = "flex";
-        } else {
-            cartContainer.style.display = "";
-            summaryBlock.style.display = "";
-            emptyMessage.style.display = "none";
-        }
-    }
+        }));
+        document.addEventListener("click", (e => {
+            if (window.innerWidth <= 495 && searchForm.classList.contains("visible")) {
+                const target = e.target;
+                if (!searchForm.contains(target) && !searchButton.contains(target)) {
+                    searchForm.classList.remove("visible");
+                    searchForm.style.visibility = "hidden";
+                    logo.style.display = "block";
+                    searchButton.setAttribute("type", "button");
+                }
+            }
+        }));
+    }));
     function adjustCounterBorders() {
         const counters = document.querySelectorAll(".find__body-counter-wrapper");
         counters.forEach((counter => counter.classList.remove("wrapped-last")));
