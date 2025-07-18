@@ -128,6 +128,9 @@ body {
 .wrapper>* {
   min-width: 0
 }
+.header__container--after::after {
+  display: none
+}
 [class*=__container] {
   max-width: 79.375rem;
   margin: 0 auto;
@@ -282,7 +285,7 @@ textarea.input {
   width: 100%;
   text-align: left;
   cursor: pointer;
-  padding: 5px 15px;
+  padding: 5px 10px;
   color: inherit;
   border-radius: 8px
 }
@@ -322,12 +325,11 @@ textarea.input {
 .catalog .select__options {
   color: #000;
   position: absolute;
-  top: calc(100% - -.0375rem);
+  top: calc(100% - -.625rem);
   border-radius: .625rem;
   min-width: 100%;
-  left: 0;
-  background-color: #fff;
-  border: none
+  left: -.5rem;
+  background-color: #fff
 }
 .rating {
   display: inline-block
@@ -665,6 +667,23 @@ textarea.input {
   transform: translate(0,-18px);
   top: auto;
   right: 28px
+}
+.menu {
+  flex: 0 1 auto
+}
+.menu__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: .9375rem
+}
+.menu__item {
+  flex-shrink: 0
+}
+.menu .spollers__title,
+.menu__link {
+  line-height: normal;
+  transition: color .3s
 }
 .icon-menu {
   flex-shrink: 0;
@@ -1642,23 +1661,6 @@ body::after {
 }
 .header__cart-link .header__cart-link-counter {
   display: none
-}
-.menu {
-  flex: 0 1 auto
-}
-.menu__list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  row-gap: .9375rem
-}
-.menu__item {
-  flex-shrink: 0
-}
-.menu .spollers__title,
-.menu__link {
-  line-height: normal;
-  transition: color .3s
 }
 .search-form {
   position: relative;
@@ -2713,11 +2715,6 @@ body::after {
 .swiper-button-lock {
   display: none!important
 }
-@media (min-width:30.9375em) {
-  .search-form {
-    min-width: 12.5rem
-  }
-}
 @media (min-width:61.99875em) {
   .catalog__aside {
     position: sticky;
@@ -2782,6 +2779,11 @@ body::after {
   .cart-card__quantity .quantity__button::after,
   .cart-card__quantity .quantity__button::before {
     height: 1.25rem
+  }
+  .menu__list {
+    -webkit-column-gap: 1.5rem;
+    -moz-column-gap: 1.5rem;
+    column-gap: 1.5rem
   }
   .sign-in,
   .sign-up {
@@ -2905,11 +2907,6 @@ body::after {
   }
   .header__cart-link-counter {
     font-size: .75rem
-  }
-  .menu__list {
-    -webkit-column-gap: 1.5rem;
-    -moz-column-gap: 1.5rem;
-    column-gap: 1.5rem
   }
   .search-form__input {
     height: 3rem
@@ -3355,23 +3352,23 @@ body::after {
 }
 @media (max-width:48em) {
   .input[placeholder]:not([data-placeholder-nohiden])::-webkit-input-placeholder {
-    font-size: .875rem
+    font-size: .8125rem
   }
   .input[placeholder]:not([data-placeholder-nohiden]):-ms-input-placeholder {
-    font-size: .875rem
+    font-size: .8125rem
   }
   .input[placeholder]:not([data-placeholder-nohiden])::-ms-input-placeholder {
-    font-size: .875rem
+    font-size: .8125rem
   }
   .input[placeholder]:not([data-placeholder-nohiden])::placeholder {
-    font-size: .875rem
+    font-size: .8125rem
   }
-  .header__container {
+  .menu__list {
     -webkit-column-gap: .9375rem;
     -moz-column-gap: .9375rem;
     column-gap: .9375rem
   }
-  .menu__list {
+  .header__container {
     -webkit-column-gap: .9375rem;
     -moz-column-gap: .9375rem;
     column-gap: .9375rem
@@ -3387,9 +3384,6 @@ body::after {
   }
   .search-form__button {
     left: .625rem
-  }
-  .find__body {
-    padding-bottom: 2.5rem
   }
   .main-product__form {
     gap: 1.5rem
@@ -3469,7 +3463,7 @@ body::after {
     padding-bottom: 1.25rem
   }
   .logo a {
-    font-size: 1.4375rem
+    font-size: 1.125rem
   }
   .title-block:not(:last-child) {
     margin-bottom: 2rem
@@ -3532,13 +3526,13 @@ body::after {
     font-size: .75rem
   }
   .header__container {
-    min-height: 4rem
+    min-height: 3.4375rem
   }
   .header__cart-link-counter {
     font-size: .625rem
   }
   .search-form__input {
-    height: 2.25rem
+    height: 1.875rem
   }
   .footer:has(.footer__subscribtion) {
     margin-top: 9.375rem
@@ -3914,6 +3908,10 @@ body::after {
     display: flex;
     flex-direction: column
   }
+  .menu .spollers__title,
+  .menu__link {
+    display: inline-block
+  }
   .icon-menu {
     display: block;
     position: relative;
@@ -4006,10 +4004,6 @@ body::after {
   .items-product {
     grid-template-columns: repeat(2,1fr)
   }
-  .menu .spollers__title,
-  .menu__link {
-    display: inline-block
-  }
   .footer__body {
     -webkit-column-gap: 7.0625rem;
     -moz-column-gap: 7.0625rem;
@@ -4046,21 +4040,21 @@ body::after {
     padding: 1.25rem .9375rem
   }
 }
-@media (max-width:61.99875em)and (any-hover:none) {
-  .icon-menu {
-    cursor: default
-  }
-}
 @media (max-width:61.99875em)and (max-width:20em) {
-  .spollers__body {
-    padding-left: 1.25rem
-  }
   .menu .spollers__title,
   .menu__link {
     font-size: 1.5rem
   }
+  .spollers__body {
+    padding-left: 1.25rem
+  }
   .catalog__aside:not(:last-child) {
     margin-bottom: 1.25rem
+  }
+}
+@media (max-width:61.99875em)and (any-hover:none) {
+  .icon-menu {
+    cursor: default
   }
 }
 @media (max-width:47.99875em) {
@@ -4092,9 +4086,6 @@ body::after {
     width: 100%;
     text-align: center
   }
-  .find__body {
-    padding-bottom: .9375rem
-  }
   .main-product__body {
     flex-wrap: wrap;
     justify-content: center;
@@ -4114,6 +4105,11 @@ body::after {
   }
   .cart__body {
     flex-wrap: wrap
+  }
+}
+@media (max-width:47.99875em)and (max-width:20em) {
+  .find__content {
+    row-gap: 1.25rem
   }
 }
 @media (max-width:40.625em) {
@@ -4167,36 +4163,6 @@ body::after {
     display: none
   }
 }
-@media (max-width:30.9375em) {
-  .search-form__input {
-    padding-left: .625rem;
-    padding-right: 2rem
-  }
-  .search-form__button .icon {
-    color: #000;
-    fill: #000;
-    will-change: transform;
-    transition: -webkit-transform .3s;
-    transition: transform .3s;
-    transition: transform .3s,-webkit-transform .3s
-  }
-  .search-form__button {
-    width: 1.5rem;
-    height: 1.5rem;
-    visibility: visible;
-    left: auto;
-    right: .53125rem
-  }
-  .search-form {
-    visibility: hidden
-  }
-}
-@media (max-width:30.9375em)and (any-hover:hover) {
-  .search-form__button .icon:hover {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1)
-  }
-}
 @media (max-width:29.99875em) {
   .select {
     flex: 1 0 7.5rem
@@ -4208,17 +4174,18 @@ body::after {
     padding: .75rem 1rem
   }
   .icon-menu {
-    width: 1.1875rem;
-    height: 1rem
+    width: 1rem;
+    height: .8125rem;
+    top: 0
   }
   .sign-in,
   .sign-up {
     padding-bottom: 2.1875rem
   }
-  .sign-in .sign-in__close-icon::before,
-  .sign-in .sign-up__close-icon::before,
-  .sign-up .sign-in__close-icon::before,
-  .sign-up .sign-up__close-icon::before {
+  .sign-in .sign-in__close-icon,
+  .sign-in .sign-up__close-icon,
+  .sign-up .sign-in__close-icon,
+  .sign-up .sign-up__close-icon {
     width: 1.25rem;
     height: 1.25rem
   }
@@ -4292,6 +4259,26 @@ body::after {
     -webkit-column-gap: .625rem;
     -moz-column-gap: .625rem;
     column-gap: .625rem
+  }
+  .header__action-buttons {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: .625rem;
+    background-color: #fff
+  }
+  .search-form {
+    min-width: 9.6875rem
+  }
+  .search-form__input {
+    padding-left: 1.875rem
+  }
+  .search-form__button {
+    width: 1.125rem;
+    height: 1.125rem;
+    left: .4375rem
   }
   .footer__social {
     gap: .875rem
@@ -4406,26 +4393,26 @@ body::after {
 }
 @media (min-width:48em)and (max-width:79.375em) {
   .input[placeholder]:not([data-placeholder-nohiden])::-webkit-input-placeholder {
-    font-size: clamp(.875rem ,.6837649402rem + .3984063745vw ,1rem)
+    font-size: clamp(.8125rem ,.5256474104rem + .5976095618vw ,1rem)
   }
   .input[placeholder]:not([data-placeholder-nohiden]):-ms-input-placeholder {
-    font-size: clamp(.875rem ,.6837649402rem + .3984063745vw ,1rem)
+    font-size: clamp(.8125rem ,.5256474104rem + .5976095618vw ,1rem)
   }
   .input[placeholder]:not([data-placeholder-nohiden])::-ms-input-placeholder {
-    font-size: clamp(.875rem ,.6837649402rem + .3984063745vw ,1rem)
+    font-size: clamp(.8125rem ,.5256474104rem + .5976095618vw ,1rem)
   }
   .input[placeholder]:not([data-placeholder-nohiden])::placeholder {
-    font-size: clamp(.875rem ,.6837649402rem + .3984063745vw ,1rem)
-  }
-  .header__container {
-    -webkit-column-gap: clamp(.9375rem ,-1.452938247rem + 4.9800796813vw ,2.5rem);
-    -moz-column-gap: clamp(.9375rem ,-1.452938247rem + 4.9800796813vw ,2.5rem);
-    column-gap: clamp(.9375rem ,-1.452938247rem + 4.9800796813vw ,2.5rem)
+    font-size: clamp(.8125rem ,.5256474104rem + .5976095618vw ,1rem)
   }
   .menu__list {
     -webkit-column-gap: clamp(.9375rem ,.0769422311rem + 1.7928286853vw ,1.5rem);
     -moz-column-gap: clamp(.9375rem ,.0769422311rem + 1.7928286853vw ,1.5rem);
     column-gap: clamp(.9375rem ,.0769422311rem + 1.7928286853vw ,1.5rem)
+  }
+  .header__container {
+    -webkit-column-gap: clamp(.9375rem ,-1.452938247rem + 4.9800796813vw ,2.5rem);
+    -moz-column-gap: clamp(.9375rem ,-1.452938247rem + 4.9800796813vw ,2.5rem);
+    column-gap: clamp(.9375rem ,-1.452938247rem + 4.9800796813vw ,2.5rem)
   }
   .search-form__input {
     padding-left: clamp(2.1875rem ,.562001992rem + 3.3864541833vw ,3.25rem)
@@ -4520,7 +4507,7 @@ body::after {
     padding-bottom: clamp(1.25rem ,1.1657894737rem + .4210526316vw ,1.5rem)
   }
   .logo a {
-    font-size: clamp(1.4375rem ,1.2480263158rem + .9473684211vw ,2rem)
+    font-size: clamp(1.125rem ,.8302631579rem + 1.4736842105vw ,2rem)
   }
   .title-block:not(:last-child) {
     margin-bottom: clamp(2rem ,1.4105263158rem + 2.9473684211vw ,3.75rem)
@@ -4583,13 +4570,13 @@ body::after {
     font-size: clamp(.75rem ,.7078947368rem + .2105263158vw ,.875rem)
   }
   .header__container {
-    min-height: clamp(4rem ,3.3263157895rem + 3.3684210526vw ,6rem)
+    min-height: clamp(3.4375rem ,2.5743421053rem + 4.3157894737vw ,6rem)
   }
   .header__cart-link-counter {
     font-size: clamp(.625rem ,.5828947368rem + .2105263158vw ,.75rem)
   }
   .search-form__input {
-    height: clamp(2.25rem ,1.9973684211rem + 1.2631578947vw ,3rem)
+    height: clamp(1.875rem ,1.4960526316rem + 1.8947368421vw ,3rem)
   }
   .footer:has(.footer__subscribtion) {
     margin-top: clamp(7.875rem ,9.8802631579rem + -2.5263157895vw ,9.375rem)
@@ -4925,24 +4912,24 @@ body::after {
   }
 }
 @media (max-width:61.99875em)and (min-width:79.375em) {
-  .spollers__body {
-    padding-left: 2.5rem
-  }
   .menu .spollers__title,
   .menu__link {
     font-size: 2rem
+  }
+  .spollers__body {
+    padding-left: 2.5rem
   }
   .catalog__aside:not(:last-child) {
     margin-bottom: 1.875rem
   }
 }
 @media (max-width:61.99875em)and (min-width:20em)and (max-width:79.375em) {
-  .spollers__body {
-    padding-left: clamp(1.25rem ,.8289473684rem + 2.1052631579vw ,2.5rem)
-  }
   .menu .spollers__title,
   .menu__link {
     font-size: clamp(1.5rem ,1.3315789474rem + .8421052632vw ,2rem)
+  }
+  .spollers__body {
+    padding-left: clamp(1.25rem ,.8289473684rem + 2.1052631579vw ,2.5rem)
   }
   .catalog__aside:not(:last-child) {
     margin-bottom: clamp(1.25rem ,1.0394736842rem + 1.0526315789vw ,1.875rem)
@@ -4996,6 +4983,16 @@ body::after {
     margin-bottom: clamp(.5rem ,-1.2841726619rem + 2.8776978417vw ,1rem)
   }
 }
+@media (max-width:47.99875em)and (min-width:79.375em) {
+  .find__content {
+    row-gap: 2.5rem
+  }
+}
+@media (max-width:47.99875em)and (min-width:20em)and (max-width:79.375em) {
+  .find__content {
+    row-gap: clamp(1.25rem ,.8289473684rem + 2.1052631579vw ,2.5rem)
+  }
+}
 @media (min-width:37.5em)and (max-width:79.375em) {
   .style__link-card-title {
     font-size: clamp(1.5rem ,.828358209rem + 1.7910447761vw ,2.25rem)
@@ -5041,6 +5038,10 @@ body::after {
   }
   [data-rating=set] .rating__item:hover~.rating__item span {
     display: none
+  }
+  .menu .spollers__title:hover,
+  .menu__link:hover {
+    color: rgba(0,0,0,.6)
   }
   .sign-in:hover:after,
   .sign-up:hover:after {
@@ -5123,10 +5124,6 @@ body::after {
   .header__sign-in-button:hover .icon {
     -webkit-transform: scale(1.1);
     transform: scale(1.1)
-  }
-  .menu .spollers__title:hover,
-  .menu__link:hover {
-    color: rgba(0,0,0,.6)
   }
   .search-form__button:hover .icon {
     color: #000
