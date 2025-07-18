@@ -2923,16 +2923,16 @@ body::after {
   .search-form__button {
     left: 1rem
   }
-  .footer:has(.footer__subscribtion) {
+  .footer:has(.footer__subscription) {
     margin-top: 7.875rem
   }
   .footer {
     padding-top: 2.25rem
   }
-  .footer__subscribtion {
+  .footer__subscription {
     margin-top: -7.875rem
   }
-  .footer__subscribtion:not(:last-child) {
+  .footer__subscription:not(:last-child) {
     margin-bottom: 3.125rem
   }
   .footer__body {
@@ -3534,16 +3534,16 @@ body::after {
   .search-form__input {
     height: 1.875rem
   }
-  .footer:has(.footer__subscribtion) {
+  .footer:has(.footer__subscription) {
     margin-top: 9.375rem
   }
   .footer {
     padding-top: 1.5rem
   }
-  .footer__subscribtion {
+  .footer__subscription {
     margin-top: -9.375rem
   }
-  .footer__subscribtion:not(:last-child) {
+  .footer__subscription:not(:last-child) {
     margin-bottom: 1.5625rem
   }
   .footer__body {
@@ -4578,16 +4578,16 @@ body::after {
   .search-form__input {
     height: clamp(1.875rem ,1.4960526316rem + 1.8947368421vw ,3rem)
   }
-  .footer:has(.footer__subscribtion) {
+  .footer:has(.footer__subscription) {
     margin-top: clamp(7.875rem ,9.8802631579rem + -2.5263157895vw ,9.375rem)
   }
   .footer {
     padding-top: clamp(1.5rem ,1.2473684211rem + 1.2631578947vw ,2.25rem)
   }
-  .footer__subscribtion {
+  .footer__subscription {
     margin-top: clamp(-9.375rem ,-9.8802631579rem + 2.5263157895vw ,-7.875rem)
   }
-  .footer__subscribtion:not(:last-child) {
+  .footer__subscription:not(:last-child) {
     margin-bottom: clamp(1.5625rem ,1.0361842105rem + 2.6315789474vw ,3.125rem)
   }
   .footer__body {
