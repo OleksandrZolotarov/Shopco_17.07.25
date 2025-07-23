@@ -8809,9 +8809,6 @@
         confirmPasswordInput.addEventListener("input", checkPasswordsMatch);
         passwordInput.addEventListener("input", checkPasswordsMatch);
     }));
-    document.addEventListener("DOMContentLoaded", (() => {
-        setSearchButtonType();
-    }));
     document.addEventListener("click", documentAction);
     function documentAction(e) {
         const targetElement = e.target;
