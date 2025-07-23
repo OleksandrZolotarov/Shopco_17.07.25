@@ -668,9 +668,6 @@ textarea.input {
   top: auto;
   right: 28px
 }
-.menu {
-  flex: 0 1 auto
-}
 .menu__list {
   display: flex;
   flex-wrap: wrap;
@@ -686,7 +683,6 @@ textarea.input {
   transition: color .3s
 }
 .icon-menu {
-  flex-shrink: 0;
   display: none
 }
 body::after {
@@ -961,8 +957,8 @@ body::after {
   position: absolute;
   top: 50%;
   right: .25rem;
-  -webkit-transform: translate(0,-50%);
-  transform: translate(0,-50%);
+  -webkit-transform: translate(0,-43%);
+  transform: translate(0,-43%);
   width: .875rem;
   height: .875rem;
   background: url(../img/icons/ap-down.svg) 0 0/100% no-repeat;
@@ -2035,7 +2031,7 @@ body::after {
   right: -100%
 }
 .customers__slide {
-  height: 100%
+  min-height: 100%
 }
 .subscription-page {
   position: relative
@@ -2205,12 +2201,14 @@ body::after {
   right: 0;
   width: 1.5rem;
   height: 1.5rem;
-  background: url(../img/icons/ellipsis.svg) 0 0/100% no-repeat
+  background: url(../img/icons/ellipsis.svg) 0 0/100% no-repeat;
+  -webkit-transform: translate(0,0) rotate(0);
+  transform: translate(0,0) rotate(0)
 }
 .review-card__spollers .spollers__item .spollers__body {
   background-color: #fff;
   position: absolute;
-  top: .9375rem;
+  top: 1.875rem;
   right: 0;
   padding: .625rem;
   border-radius: .3125rem;
@@ -4004,6 +4002,18 @@ body::after {
   .items-product {
     grid-template-columns: repeat(2,1fr)
   }
+  .header__logo {
+    order: 2
+  }
+  .header__menu {
+    order: 1
+  }
+  .header__search-form {
+    order: 3
+  }
+  .header__action-buttons {
+    order: 4
+  }
   .footer__body {
     -webkit-column-gap: 7.0625rem;
     -moz-column-gap: 7.0625rem;
@@ -4191,6 +4201,11 @@ body::after {
   }
   .popup-input {
     padding: .625rem .75rem
+  }
+  ._spoller-init .spollers__title--mobile::before {
+    right: -1.5625rem;
+    width: 1.25rem;
+    height: 1.25rem
   }
   .tabs__title {
     padding: 1.0625rem .78125rem
